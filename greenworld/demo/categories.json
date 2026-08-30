@@ -1,0 +1,34 @@
+[
+  {
+    "name": "General Health",
+    "description": "Everyday wellness and general health support products."
+  },
+  {
+    "name": "Men's Health",
+    "description": "Products selected for men's health, vitality and wellbeing."
+  },
+  {
+    "name": "Women's Health",
+    "description": "A carefully organized collection for women's wellness."
+  },
+  {
+    "name": "Detox & Wellness",
+    "description": "Cleansing and detox support for everyday wellbeing."
+  },
+  {
+    "name": "Weight Management",
+    "description": "Products to support healthy weight management routines."
+  },
+  {
+    "name": "Digestive Care",
+    "description": "Support for digestion, gut comfort and regularity."
+  },
+  {
+    "name": "Immunity & Energy",
+    "description": "Nutritional support for immunity, energy and vitality."
+  },
+  {
+    "name": "Nutrition & Supplements",
+    "description": "Selected nutrition, vitamins and wellness supplements."
+  }
+]

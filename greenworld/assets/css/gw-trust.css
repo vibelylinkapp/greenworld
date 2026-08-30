@@ -1,0 +1,58 @@
+/* ============================================================
+   GreenWorld Wellness - Trust Center + homepage trust band
+   ============================================================ */
+
+/* ---------- Trust Center page ---------- */
+.gw-trust{padding:2.5rem var(--gw-pad,16px) 3.5rem;}
+.gw-trust__intro{max-width:760px;margin:0 auto 1.75rem;text-align:center;}
+.gw-trust__intro .gw-eyebrow{color:var(--gw-gold,#C8A15A);}
+.gw-trust__intro h1{font-size:clamp(2rem,4vw,2.9rem);margin:.4rem 0 .6rem;color:var(--gw-ink,#0B3F2E);}
+.gw-trust__intro p{color:#4b5b52;font-size:1.08rem;line-height:1.6;}
+
+.gw-trust__toc{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;gap:.4rem;justify-content:center;padding:.8rem;margin:0 0 2rem;background:rgba(255,255,255,.9);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border-top:1px solid #e6ede8;border-bottom:1px solid #e6ede8;}
+.gw-trust__toc a{font-size:.85rem;font-weight:600;color:var(--gw-ink,#0B3F2E);text-decoration:none;padding:.35rem .7rem;border-radius:999px;background:#eef4f0;transition:background .2s ease,color .2s ease;}
+.gw-trust__toc a:hover{background:var(--gw-ink,#0B3F2E);color:#fff;}
+
+.gw-trust__sec{max-width:820px;margin:0 auto 2.6rem;scroll-margin-top:80px;}
+.gw-trust__sec h2{font-size:clamp(1.4rem,2.6vw,1.9rem);color:var(--gw-ink,#0B3F2E);margin:0 0 .8rem;padding-bottom:.5rem;border-bottom:2px solid #eef4f0;}
+.gw-trust__sec h3{font-size:1.15rem;color:var(--gw-ink,#0B3F2E);margin:1.6rem 0 .5rem;}
+.gw-trust__sec p{color:#41514a;line-height:1.7;margin:0 0 .9rem;}
+
+.gw-trust__facts{list-style:none;margin:0;padding:0;display:grid;gap:.6rem;}
+.gw-trust__facts li{display:flex;flex-wrap:wrap;gap:.4rem 1rem;padding:.7rem .9rem;background:#f6faf7;border:1px solid #e6ede8;border-radius:12px;}
+.gw-trust__facts li span{min-width:150px;color:#6b7d73;font-size:.9rem;}
+.gw-trust__facts li strong{color:var(--gw-ink,#0B3F2E);font-weight:700;}
+.gw-trust__facts a{color:inherit;}
+
+.gw-trust__delivery{display:grid;grid-template-columns:repeat(2,1fr);gap:.9rem;margin:.6rem 0 1rem;}
+.gw-trust__ship{border:1px solid #e6ede8;border-radius:14px;padding:1rem;background:#fff;}
+.gw-trust__ship strong{display:block;color:var(--gw-ink,#0B3F2E);margin:.35rem 0 .3rem;}
+.gw-trust__ship p{font-size:.9rem;color:#5b6b62;margin:0;line-height:1.5;}
+.gw-trust__fee{display:inline-block;font-weight:800;color:var(--gw-gold,#C8A15A);background:#fbf6ec;border-radius:999px;padding:.2rem .7rem;font-size:.9rem;}
+.gw-trust__times{list-style:none;margin:.4rem 0 0;padding:0;display:grid;gap:.45rem;}
+.gw-trust__times li{position:relative;padding-left:1.2rem;color:#41514a;line-height:1.6;}
+.gw-trust__times li::before{content:"";position:absolute;left:0;top:.55em;width:7px;height:7px;border-radius:50%;background:var(--gw-gold,#C8A15A);}
+.gw-trust__note{font-size:.92rem;color:#7a5a2a;background:#fbf6ec;border-radius:10px;padding:.6rem .8rem;padding-left:1.2rem;}
+.gw-trust__note::before{top:1.05em;}
+
+.gw-team__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:.8rem;}
+.gw-team__card{text-align:center;border:1px solid #e6ede8;border-radius:14px;padding:1.3rem 1rem;background:#fff;}
+.gw-team__avatar svg{width:72px;height:72px;border-radius:50%;}
+.gw-team__card strong{display:block;color:var(--gw-ink,#0B3F2E);margin:.6rem 0 .2rem;}
+.gw-team__card span{font-size:.85rem;color:#8a9a90;}
+
+.gw-trust__contact .button{margin:.2rem .4rem .2rem 0;}
+
+@media (max-width:640px){
+  .gw-trust__delivery{grid-template-columns:1fr;}
+  .gw-team__grid{grid-template-columns:1fr;}
+  .gw-trust__facts li span{min-width:0;}
+}
+
+/* ---------- Homepage "Why trust us" band ---------- */
+.gw-whytrust__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;}
+.gw-whytrust__card{border:1px solid #e6ede8;border-radius:16px;padding:1.3rem;background:#fff;box-shadow:0 14px 34px -26px rgba(11,63,46,.5);}
+.gw-whytrust__card strong{display:block;color:var(--gw-ink,#0B3F2E);font-size:1.05rem;margin-bottom:.35rem;}
+.gw-whytrust__card p{color:#5b6b62;line-height:1.55;margin:0;font-size:.95rem;}
+@media (max-width:900px){.gw-whytrust__grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:560px){.gw-whytrust__grid{grid-template-columns:1fr;}}

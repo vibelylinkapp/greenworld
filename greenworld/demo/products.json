@@ -1,0 +1,82 @@
+[
+  {
+    "key": "cordyceps-plus",
+    "name": "Cordyceps Plus Capsule",
+    "sku": "GW-W01",
+    "price": "3200",
+    "brand": "Green World",
+    "category": "Immunity & Energy",
+    "short": "Nutritional support for energy, stamina and immunity.",
+    "description": "Cordyceps Plus Capsule from the Green World range, formulated to support everyday energy, stamina and immune wellbeing. Use as directed. Sold by Green World Health Solutions with delivery across Kenya."
+  },
+  {
+    "key": "spirulina",
+    "name": "Spirulina Capsule",
+    "sku": "GW-W02",
+    "price": "2600",
+    "brand": "Green World",
+    "category": "Nutrition & Supplements",
+    "short": "Nutrient-rich green superfood supplement.",
+    "description": "Spirulina Capsule, a nutrient-dense green superfood providing plant protein, vitamins and minerals to support general nutrition and wellbeing."
+  },
+  {
+    "key": "blood-sugar-support",
+    "name": "Natural Blood Sugar Support Pack",
+    "sku": "GW-DBP",
+    "price": "5400",
+    "brand": "Green World",
+    "category": "General Health",
+    "short": "Nutritional support pack for healthy lifestyles.",
+    "description": "A curated wellness pack to support a healthy lifestyle. Always consult a qualified healthcare professional for any medical condition. Use as directed."
+  },
+  {
+    "key": "slimming-tea",
+    "name": "Pro-Slim Herbal Tea",
+    "sku": "GW-PST",
+    "price": "1900",
+    "brand": "Green World",
+    "category": "Weight Management",
+    "short": "Herbal tea to complement a healthy weight routine.",
+    "description": "Pro-Slim Herbal Tea to complement a balanced diet and active lifestyle as part of a healthy weight-management routine."
+  },
+  {
+    "key": "digestive-enzyme",
+    "name": "Digestive Wellness Capsule",
+    "sku": "GW-DGW",
+    "price": "2400",
+    "brand": "Green World",
+    "category": "Digestive Care",
+    "short": "Support for digestion and gut comfort.",
+    "description": "Digestive Wellness Capsule to support comfortable digestion and regularity as part of a balanced routine."
+  },
+  {
+    "key": "vig-power",
+    "name": "Vig Power Capsule",
+    "sku": "GW-VPC",
+    "price": "3600",
+    "brand": "Green World",
+    "category": "Men's Health",
+    "short": "Nutritional support for men's vitality.",
+    "description": "Vig Power Capsule from the Green World range, formulated to support men's everyday vitality and wellbeing. Use as directed."
+  },
+  {
+    "key": "women-care",
+    "name": "Women Care Wellness Pack",
+    "sku": "GW-WCP",
+    "price": "4100",
+    "brand": "Green World",
+    "category": "Women's Health",
+    "short": "A wellness pack organized for women's needs.",
+    "description": "Women Care Wellness Pack, a thoughtfully organized selection supporting women's everyday wellness. Use as directed and consult a professional where appropriate."
+  },
+  {
+    "key": "detox-pad",
+    "name": "Detox Foot Pad (10 pcs)",
+    "sku": "GW-DFP",
+    "price": "1500",
+    "brand": "Green World",
+    "category": "Detox & Wellness",
+    "short": "Gentle detox foot pads for everyday comfort.",
+    "description": "Detox Foot Pad, a gentle everyday wellness accessory. Pack of 10. Follow the instructions provided on the pack."
+  }
+]

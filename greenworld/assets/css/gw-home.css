@@ -1,0 +1,238 @@
+/* ============================================================
+   GreenWorld Wellness - Homepage v1.2.0
+   Hero carousel, category grid, featured scroller, health
+   tri-section, scan booking band, product-grid alignment fix.
+   Scoped classes; safe to load site-wide.
+   ============================================================ */
+
+:root{
+  --gw-ink:#0B3F2E;
+  --gw-ink-2:#093B28;
+  --gw-gold:#C8A15A;
+  --gw-radius:18px;
+  --gw-shadow:0 18px 40px -24px rgba(11,63,46,.45);
+}
+
+/* ---------- Hero carousel ---------- */
+.gw-herocar{position:relative;overflow:hidden;isolation:isolate;background:var(--gw-ink);}
+.gw-herocar__track{position:relative;display:grid;}
+.gw-herocar__slide{grid-area:1/1;position:relative;min-height:clamp(420px,56vh,640px);display:flex;align-items:center;background-size:cover;background-position:center;opacity:0;visibility:hidden;transform:scale(1.04);transition:opacity .7s ease,transform 6s ease,visibility .7s ease;}
+.gw-herocar__slide.is-active{opacity:1;visibility:visible;transform:scale(1);z-index:2;}
+.gw-herocar__inner{width:100%;}
+.gw-herocar .gw-hero__copy{max-width:640px;color:#fff;padding:2.5rem 0;}
+.gw-herocar .gw-hero__eyebrow{display:inline-block;letter-spacing:.14em;text-transform:uppercase;font-size:.74rem;font-weight:700;color:var(--gw-gold);margin-bottom:1rem;}
+.gw-herocar .gw-hero__title{color:#fff;font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.08;margin:0 0 1rem;font-weight:800;letter-spacing:-.01em;}
+.gw-herocar .gw-hero__sub{color:rgba(255,255,255,.9);font-size:clamp(1rem,1.4vw,1.18rem);line-height:1.55;margin:0 0 1.6rem;max-width:44ch;}
+.gw-herocar .gw-hero__cta{display:flex;flex-wrap:wrap;gap:.75rem;}
+.gw-herocar__nav{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:46px;height:46px;border-radius:50%;border:0;cursor:pointer;background:rgba(255,255,255,.16);color:#fff;font-size:1.6rem;line-height:1;display:grid;place-items:center;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:background .2s ease;}
+.gw-herocar__nav:hover{background:rgba(255,255,255,.32);}
+.gw-herocar__nav--prev{left:clamp(.5rem,2vw,1.5rem);}
+.gw-herocar__nav--next{right:clamp(.5rem,2vw,1.5rem);}
+.gw-herocar__dots{position:absolute;left:0;right:0;bottom:1.1rem;z-index:5;display:flex;justify-content:center;gap:.5rem;}
+.gw-herocar__dot{width:9px;height:9px;padding:0;border:0;border-radius:50%;cursor:pointer;background:rgba(255,255,255,.45);transition:all .25s ease;}
+.gw-herocar__dot.is-active{background:var(--gw-gold);width:26px;border-radius:6px;}
+.gw-herocar__inner{position:relative;z-index:3;}
+.gw-herocar__scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(9,49,36,.9) 0%,rgba(9,49,36,.66) 40%,rgba(9,49,36,.3) 68%,rgba(9,49,36,.06) 100%);}
+.gw-herocar__slide::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(0deg,rgba(9,49,36,.3),transparent 42%);}
+.gw-herocar .gw-hero__copy{position:relative;z-index:3;}
+.gw-herocar .gw-hero__title,.gw-herocar .gw-hero__sub{text-shadow:0 2px 14px rgba(0,0,0,.42);}
+@media (max-width:640px){
+  .gw-herocar__nav{display:none;}
+  .gw-herocar .gw-hero__copy{padding:1.75rem 0;}
+}
+@media (prefers-reduced-motion:reduce){
+  .gw-herocar__slide{transition:opacity .01s;transform:none;}
+}
+
+/* ---------- Category grid (10, 2x5) ---------- */
+.gw-cats__grid--5{display:grid;grid-template-columns:repeat(5,1fr);gap:1.1rem;}
+.gw-cat-card{display:flex;flex-direction:column;border-radius:var(--gw-radius);overflow:hidden;background:#fff;box-shadow:var(--gw-shadow);text-decoration:none;color:var(--gw-ink);transition:transform .22s ease,box-shadow .22s ease;}
+.gw-cat-card:hover{transform:translateY(-4px);box-shadow:0 24px 48px -22px rgba(11,63,46,.5);}
+.gw-cat-card__media{position:relative;aspect-ratio:4/3;overflow:hidden;background:linear-gradient(135deg,#e8f0ea,#d6e6db);}
+.gw-cat-card__img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;}
+.gw-cat-card:hover .gw-cat-card__img{transform:scale(1.06);}
+.gw-cat-card__body{padding:.85rem .95rem 1rem;display:flex;flex-direction:column;gap:.15rem;}
+.gw-cat-card__name{font-weight:700;font-size:.98rem;line-height:1.25;}
+.gw-cat-card__count{font-size:.8rem;color:#6b7d73;}
+.gw-cat-card__media .gw-ph{display:grid;place-items:center;width:100%;height:100%;background:linear-gradient(135deg,var(--gw-ink),#1b6b4e);}
+.gw-cat-card__media .gw-ph>span{font-size:2rem;font-weight:800;color:rgba(255,255,255,.9);}
+@media (max-width:1024px){.gw-cats__grid--5{grid-template-columns:repeat(3,1fr);}}
+@media (max-width:640px){.gw-cats__grid--5{grid-template-columns:repeat(2,1fr);gap:.75rem;}}
+
+/* ---------- Featured single-row scroller ---------- */
+.gw-scroller{position:relative;}
+.gw-scroller .products,
+.gw-featured ul.products{display:flex!important;grid-template-columns:none!important;flex-wrap:nowrap!important;overflow-x:auto;scroll-snap-type:x mandatory;gap:1.1rem;margin:0!important;padding:.35rem .1rem 1rem!important;list-style:none;scrollbar-width:thin;-webkit-overflow-scrolling:touch;}
+.gw-scroller .products::-webkit-scrollbar{height:8px;}
+.gw-scroller .products::-webkit-scrollbar-thumb{background:rgba(11,63,46,.25);border-radius:4px;}
+.gw-scroller .products li.product,
+.gw-featured ul.products li.product{flex:0 0 calc((100% - 4.4rem) / 5)!important;width:auto!important;max-width:none!important;margin:0!important;float:none!important;scroll-snap-align:start;}
+.gw-scroller__nav{position:absolute;top:38%;transform:translateY(-50%);z-index:4;width:44px;height:44px;border-radius:50%;border:1px solid rgba(11,63,46,.12);cursor:pointer;background:#fff;color:var(--gw-ink);font-size:1.5rem;line-height:1;display:grid;place-items:center;box-shadow:var(--gw-shadow);transition:transform .2s ease;}
+.gw-scroller__nav:hover{transform:translateY(-50%) scale(1.06);}
+.gw-scroller__nav--prev{left:-10px;}
+.gw-scroller__nav--next{right:-10px;}
+@media (max-width:640px){.gw-scroller__nav{display:none;}}
+
+/* ---------- Health tri-section (Men/Women/General) ---------- */
+.gw-focus__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+.gw-focus__card{position:relative;display:flex;align-items:flex-end;min-height:300px;border-radius:var(--gw-radius);overflow:hidden;background-size:cover;background-position:center;text-decoration:none;box-shadow:var(--gw-shadow);transition:transform .25s ease;}
+.gw-focus__card:hover{transform:translateY(-4px);}
+.gw-focus__body{padding:1.4rem;color:#fff;display:flex;flex-direction:column;gap:.35rem;}
+.gw-focus__name{font-size:1.35rem;font-weight:800;}
+.gw-focus__text{font-size:.95rem;color:rgba(255,255,255,.88);max-width:26ch;}
+.gw-focus__link{margin-top:.4rem;font-weight:700;color:var(--gw-gold);}
+@media (max-width:820px){.gw-focus__grid{grid-template-columns:1fr;}}
+
+/* ---------- Full body scan booking band ---------- */
+.gw-scanband{background:linear-gradient(120deg,var(--gw-ink),#12563c);color:#fff;}
+.gw-scanband__inner{display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
+.gw-scanband__copy{max-width:640px;}
+.gw-scanband__copy .gw-eyebrow{color:var(--gw-gold);}
+.gw-scanband__copy h2{color:#fff;font-size:clamp(1.5rem,3vw,2.1rem);margin:.35rem 0 .6rem;}
+.gw-scanband__copy p{color:rgba(255,255,255,.9);margin:0 0 1.2rem;line-height:1.55;}
+.gw-scanband__price{text-align:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:var(--gw-radius);padding:1.3rem 1.8rem;min-width:180px;}
+.gw-scanband__from{display:block;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.72);}
+.gw-scanband__amount{display:block;font-size:2.3rem;font-weight:800;color:var(--gw-gold);line-height:1.1;}
+.gw-scanband__per{display:block;font-size:.85rem;color:rgba(255,255,255,.72);}
+@media (max-width:640px){.gw-scanband__inner{flex-direction:column;align-items:flex-start;}.gw-scanband__price{align-self:stretch;}}
+
+/* ---------- Product grid alignment fix (shop / archives) ---------- */
+.woocommerce ul.products,
+ul.products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.25rem;margin:0 0 1.75rem;padding:0;list-style:none;}
+.woocommerce ul.products li.product,
+ul.products li.product{width:auto!important;margin:0!important;float:none!important;clear:none!important;}
+.woocommerce ul.products li.product::before,
+ul.products li.product::before{display:none!important;content:none!important;}
+.gw-wc--shop ul.products,
+.gw-wc--shop .gw-wc__main ul.products,
+.woocommerce.columns-3 ul.products{grid-template-columns:repeat(3,minmax(0,1fr))!important;}
+@media (max-width:1024px){.woocommerce ul.products,ul.products{grid-template-columns:repeat(3,minmax(0,1fr));}}
+@media (max-width:640px){.woocommerce ul.products,ul.products{grid-template-columns:repeat(2,1fr);gap:.85rem;}}
+
+/* Scroller must override the product-grid rule above */
+.gw-scroller .products,
+.gw-featured ul.products{grid-template-columns:none!important;}
+
+/* ---------- Breadcrumbs (visible trail, mirrors JSON-LD) ---------- */
+.gw-breadcrumbs{font-size:.85rem;color:#6b7d73;border-bottom:1px solid #eef4f0;background:#fbfdfc;}
+.gw-breadcrumbs__wrap{padding:.85rem 0;}
+.gw-breadcrumbs ol{list-style:none;display:flex;flex-wrap:wrap;align-items:center;gap:.15rem 0;margin:0;padding:0;}
+.gw-breadcrumbs li{display:flex;align-items:center;}
+.gw-breadcrumbs li:not(:last-child)::after{content:"\203A";margin:0 .5rem;color:#b8ccbe;}
+.gw-breadcrumbs a{color:#4b5b52;text-decoration:none;}
+.gw-breadcrumbs a:hover{color:var(--gw-ink,#0B3F2E);text-decoration:underline;}
+.gw-breadcrumbs li[aria-current="page"]{color:var(--gw-ink,#0B3F2E);font-weight:600;}
+
+/* ============================================================
+   v1.6.0 — Homepage refinements
+   - "Explore our world of wellness" pillars: 1 row of 4 + scroll
+   - Featured scroller: 2 products per row on mobile
+   - Category shelves (Men's / Women's / General): ~6 per row + scroll
+   ============================================================ */
+
+/* ---------- Pillars as a self-scrolling marquee (Explore our world of wellness) ---------- */
+.gw-marquee{position:relative;overflow:hidden;}
+.gw-marquee--pillars{-webkit-mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);}
+.gw-marquee--pillars .gw-pillars{margin:0;}
+.gw-marquee--pillars .gw-pillars__grid{
+  display:flex!important;grid-template-columns:none!important;flex-wrap:nowrap!important;
+  width:max-content;gap:1.1rem;margin:0!important;padding:.35rem .1rem 1rem!important;
+  will-change:transform;
+}
+.gw-marquee--pillars .gw-pillars__item{flex:0 0 auto!important;width:clamp(230px,22vw,290px)!important;margin:0!important;}
+.gw-marquee--pillars .gw-pillars__item a{height:100%;}
+/* Animation is enabled by JS (adds .is-ready) only after the track is duplicated,
+   so the -50% loop is always seamless. */
+.gw-marquee--pillars.is-ready .gw-pillars__grid{animation:gw-marquee-x var(--gw-marquee-dur,45s) linear infinite;}
+.gw-marquee--pillars.is-ready:hover .gw-pillars__grid,
+.gw-marquee--pillars.is-ready:focus-within .gw-pillars__grid{animation-play-state:paused;}
+@keyframes gw-marquee-x{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+@media (prefers-reduced-motion:reduce){
+  .gw-marquee--pillars{overflow-x:auto;-webkit-mask-image:none;mask-image:none;}
+  .gw-marquee--pillars.is-ready .gw-pillars__grid{animation:none;}
+}
+
+/* ---------- Category product shelves (replaces "Shop by person") ---------- */
+.gw-shelves .gw-shelf{margin-bottom:2.4rem;}
+.gw-shelves .gw-shelf:last-child{margin-bottom:0;}
+.gw-scroller--shelf .products li.product{flex:0 0 calc((100% - 4.4rem) / 5)!important;}
+/* v1.8.1: shelves + featured must render as ONE 5-up row that scrolls, not wrap into the base 3-up product grid (which outranks the plain .gw-scroller flex rule). */
+.gw-scroller[data-gw-scroller] .products{display:flex!important;grid-template-columns:none!important;flex-wrap:nowrap!important;overflow-x:auto;gap:1.1rem;margin:0!important;padding:.35rem .1rem 1rem!important;scroll-snap-type:x mandatory;}
+.gw-scroller[data-gw-scroller] .products li.product{flex:0 0 calc((100% - 4.4rem) / 5)!important;width:auto!important;max-width:none!important;margin:0!important;float:none!important;scroll-snap-align:start;}
+@media (max-width:1024px){.gw-scroller[data-gw-scroller] .products li.product{flex:0 0 calc((100% - 3.3rem) / 4)!important;}}
+@media (max-width:900px){.gw-scroller[data-gw-scroller] .products li.product{flex:0 0 calc((100% - 2.2rem) / 3)!important;}}
+@media (max-width:640px){.gw-scroller[data-gw-scroller] .products li.product{flex:0 0 calc((100% - 1.1rem) / 2)!important;}}
+/* Screenshot-style section heading: bold title + short green underline accent */
+.gw-shelves .gw-shelf .gw-sec__head{align-items:flex-end;border-bottom:1px solid #e6efe8;padding-bottom:.55rem;margin-bottom:1.25rem;}
+.gw-shelves .gw-shelf .gw-sec__title{position:relative;padding-bottom:.55rem;margin-bottom:-.55rem;font-size:clamp(1.15rem,1rem+1vw,1.6rem);text-transform:uppercase;letter-spacing:.01em;color:var(--gw-ink,#0B3F2E);}
+.gw-shelves .gw-shelf .gw-sec__title::after{content:"";position:absolute;left:0;bottom:-1px;width:72px;height:3px;border-radius:2px;background:var(--gw-ink,#0B3F2E);}
+.gw-shelves .gw-shelf .gw-sec__more{white-space:nowrap;font-weight:600;color:var(--gw-ink,#0B3F2E);}
+
+/* Featured + shelves: show two products per row on mobile, clearly visible */
+@media (max-width:640px){
+  .gw-featured ul.products li.product,
+  .gw-scroller .products li.product{flex:0 0 calc(50% - .55rem)!important;}
+}
+
+
+/* =====================================================================
+   v1.6.4 (2026-08-13) - homepage product rows + category-archive grid.
+   Appended last: at equal specificity later source wins, so these are the
+   authoritative item sizes and override any earlier width rules.
+   * Featured + the three category shelves: exactly 5 fully-visible cards
+     per row on desktop, the rest reachable by horizontal scroll.
+     3-up on tablet, 2-up on phone.
+   * Category / shop archive grid: 3 equal cards per row. minmax(0,1fr)
+     lets tracks shrink so cards never wrap early and leave a blank column.
+   ===================================================================== */
+.gw-scroller .products li.product,
+.gw-scroller--shelf .products li.product,
+.gw-featured ul.products li.product{
+  flex:0 0 calc((100% - 4.4rem) / 5)!important;
+  width:auto!important;max-width:none!important;
+}
+@media (max-width:1024px){
+  .gw-scroller .products li.product,
+  .gw-scroller--shelf .products li.product,
+  .gw-featured ul.products li.product{flex:0 0 calc((100% - 2.2rem) / 3)!important;}
+}
+@media (max-width:640px){
+  .gw-scroller .products li.product,
+  .gw-scroller--shelf .products li.product,
+  .gw-featured ul.products li.product{flex:0 0 calc((100% - 1.1rem) / 2)!important;}
+}
+.gw-wc--shop ul.products,
+.gw-wc--shop .gw-wc__main ul.products{
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:1.25rem!important;
+}
+@media (max-width:1100px){
+  .gw-wc--shop ul.products,
+  .gw-wc--shop .gw-wc__main ul.products{grid-template-columns:repeat(2,minmax(0,1fr))!important;}
+}
+@media (max-width:560px){
+  .gw-wc--shop ul.products,
+  .gw-wc--shop .gw-wc__main ul.products{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:.8rem!important;}
+}
+
+/* =====================================================================
+   v1.6.6 (2026-08-13) - banner-mode hero + full-width deliveries band.
+   Hero shows complete pre-designed banners (real products + models)
+   edge-complete on a soft brand background, cross-fading via the existing
+   carousel JS. Deliveries band is one wide banner linking to the shop.
+   ===================================================================== */
+.gw-herocar--banner{background:var(--gw-ink,#0B3F2E);}
+.gw-herocar--banner .gw-herocar__slide{display:block;position:relative;min-height:0;height:clamp(240px,26vw,400px);padding:0;background:none;overflow:hidden;}
+.gw-herocar--banner .gw-herocar__banner{position:relative;display:block;width:100%;height:100%;overflow:hidden;}
+.gw-herocar--banner .gw-herocar__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(28px) brightness(.72);transform:scale(1.14);z-index:0;}
+.gw-herocar--banner .gw-herocar__img{position:relative;z-index:2;display:block;height:100%;width:auto;max-width:96%;margin:0 auto;object-fit:contain;border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,.28);}
+.gw-herocar--banner .gw-herocar__nav{background:rgba(11,63,46,.14);color:var(--gw-ink,#0B3F2E);}
+.gw-herocar--banner .gw-herocar__nav:hover{background:rgba(11,63,46,.26);}
+.gw-herocar--banner .gw-herocar__dot{background:rgba(11,63,46,.26);}
+.gw-herocar--banner .gw-herocar__dot.is-active{background:var(--gw-green,#1E5B3E);}
+.gw-deliveries .gw-deliveries__banner{display:block;border-radius:16px;overflow:hidden;box-shadow:0 14px 36px rgba(11,63,46,.12);transition:transform .25s ease,box-shadow .25s ease;}
+.gw-deliveries .gw-deliveries__banner:hover{transform:translateY(-2px);box-shadow:0 20px 48px rgba(11,63,46,.18);}
+.gw-deliveries .gw-deliveries__img{display:block;width:100%;height:auto;}
+@media (max-width:640px){
+  .gw-herocar--banner .gw-herocar__slide{height:clamp(200px,50vw,300px);min-height:0;padding:0;}
+  .gw-herocar--banner .gw-herocar__img{border-radius:10px;max-width:98%;}
+}
