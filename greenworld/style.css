@@ -1,0 +1,22 @@
+/*
+Theme Name: GreenWorld Wellness
+Theme URI: https://greenworldhealth.co.ke/
+Author: Green World Health Solutions
+Author URI: https://greenworldhealth.co.ke/
+Description: GreenWorld Wellness is a premium, classic health & wellness WooCommerce theme built for Green World Health Solutions, Kenya. Timeless botanical-green + ivory design system, editorial typography, mega-menu navigation, AJAX search, cart drawer, responsible health communication, Core Web Vitals performance, WCAG 2.1 AA accessibility and Merchant-Center-friendly Product schema. PHP 8.0+, WordPress + WooCommerce latest.
+Version: 1.34.5
+Requires at least: 6.4
+Tested up to: 6.7
+Requires PHP: 8.0
+WC requires at least: 8.0
+WC tested up to: 9.5
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: greenworld
+Tags: e-commerce, woo-commerce, custom-colors, custom-menu, custom-logo, editor-style, featured-images, translation-ready, accessibility-ready, rtl-language-support
+*/
+
+/* GreenWorld ships its compiled design-system CSS from assets/css/main.css.
+   This file exists to satisfy the WordPress theme header and hold minimal
+   critical fallbacks. Do not add customizations here - use the child theme. */
+:root{color-scheme:light}

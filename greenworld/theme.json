@@ -1,0 +1,68 @@
+{
+  "$schema": "https://schemas.wp.org/wp/6.7/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": true,
+    "useRootPaddingAwareAlignments": true,
+    "layout": { "contentSize": "820px", "wideSize": "1280px" },
+    "color": {
+      "defaultPalette": false,
+      "custom": true,
+      "customGradient": true,
+      "palette": [
+        { "slug": "green", "color": "#1E5B3E", "name": "Botanical Green" },
+        { "slug": "green-deep", "color": "#123726", "name": "Deep Green" },
+        { "slug": "sage", "color": "#7E9B86", "name": "Sage" },
+        { "slug": "sage-soft", "color": "#E7EFE7", "name": "Soft Sage" },
+        { "slug": "ivory", "color": "#FBF9F4", "name": "Warm Ivory" },
+        { "slug": "surface", "color": "#FFFFFF", "name": "Surface" },
+        { "slug": "surface-muted", "color": "#F3F0E8", "name": "Surface Muted" },
+        { "slug": "line", "color": "#E6E1D5", "name": "Line" },
+        { "slug": "gold", "color": "#A98545", "name": "Muted Brass" },
+        { "slug": "success", "color": "#2E7D32", "name": "In Stock Green" },
+        { "slug": "danger", "color": "#B23A2E", "name": "Sale Red" },
+        { "slug": "ink", "color": "#1E2620", "name": "Charcoal Ink" },
+        { "slug": "text-muted", "color": "#5C665E", "name": "Muted Text" }
+      ]
+    },
+    "typography": {
+      "fluid": true,
+      "customFontSize": true,
+      "fontFamilies": [
+        { "slug": "sans", "name": "Inter", "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" },
+        { "slug": "display", "name": "Fraunces", "fontFamily": "Fraunces, 'Cormorant Garamond', Georgia, 'Times New Roman', serif" }
+      ],
+      "fontSizes": [
+        { "slug": "sm", "size": "0.875rem", "name": "Small" },
+        { "slug": "base", "size": "1rem", "name": "Base" },
+        { "slug": "lg", "size": "1.25rem", "name": "Large" },
+        { "slug": "xl", "size": "clamp(1.5rem,1.2rem + 1.4vw,2.1rem)", "name": "XL" },
+        { "slug": "2xl", "size": "clamp(2rem,1.4rem + 2.8vw,3.4rem)", "name": "Display" }
+      ]
+    },
+    "spacing": { "customSpacingSize": true, "units": ["px","em","rem","vw","%"], "spacingScale": { "steps": 8 } }
+  },
+  "styles": {
+    "color": { "background": "var(--wp--preset--color--ivory)", "text": "var(--wp--preset--color--ink)" },
+    "typography": {
+      "fontFamily": "var(--wp--preset--font-family--sans)",
+      "lineHeight": "1.65",
+      "fontSize": "var(--wp--preset--font-size--base)"
+    },
+    "elements": {
+      "link": {
+        "color": { "text": "var(--wp--preset--color--green)" },
+        ":hover": { "color": { "text": "var(--wp--preset--color--green-deep)" } }
+      },
+      "heading": {
+        "typography": { "fontFamily": "var(--wp--preset--font-family--display)", "fontWeight": "600", "lineHeight": "1.18" },
+        "color": { "text": "var(--wp--preset--color--green-deep)" }
+      },
+      "button": {
+        "color": { "background": "var(--wp--preset--color--green)", "text": "#FBF9F4" },
+        "border": { "radius": "6px" },
+        "typography": { "fontWeight": "600" }
+      }
+    }
+  }
+}
