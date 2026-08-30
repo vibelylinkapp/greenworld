@@ -80,12 +80,26 @@ add_filter(
 // 4) A valid price range (the theme default "KES" is not a valid schema value).
 add_filter( 'greenworld_price_range', static fn() => 'KSh 1,500 - KSh 26,500' );
 
-// 5) Alternate brand names — reinforce the entity and disambiguate from
+// 5) Entity naming — establish ONE distinct entity and disambiguate from the
 //    other "Green World" businesses in Kenya.
+//    - Legal / organization name (the authoritative entity): Green World Health Solutions
+//    - Short brand + preferred site name (WebSite.name):      Green World Health
+//    We deliberately do NOT claim "Green World Kenya" as an alternate name — it
+//    is a different, competing business, and claiming it would blur the very
+//    entity we are trying to make distinct. Alternate names are limited to the
+//    short brand and the domain, matching the target knowledge-panel identity.
+add_filter( 'greenworld_legal_name', static fn() => 'Green World Health Solutions' );
+add_filter( 'greenworld_brand_name', static fn() => 'Green World Health' );
 add_filter(
 	'greenworld_org_alternate_names',
-	static fn() => array( 'Green World Health', 'Green World Health Solutions', 'Green World Kenya' )
+	static fn() => array( 'Green World Health', 'greenworldhealth.co.ke' )
 );
+
+// 5a) More specific schema type for the Nairobi storefront (LocalBusiness node).
+add_filter( 'greenworld_local_business_type', static fn() => 'HealthAndBeautyBusiness' );
+
+// 5b) Homepage <title> suffix, aligned to the target search-result wording.
+add_filter( 'greenworld_home_title_suffix', static fn() => 'Health & Wellness Products in Kenya' );
 
 // 6) Nairobi office pin + Business Profile map link (strengthens the local pack).
 //    TODO: replace the coordinates with the EXACT marker — open the pin in

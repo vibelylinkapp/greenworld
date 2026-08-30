@@ -48,7 +48,7 @@ final class Meta implements Bootable {
 		$site = get_bloginfo( 'name' );
 
 		if ( is_front_page() ) {
-			$parts['title']   = $site;
+			$parts['title']   = $this->brand_name();
 			$parts['tagline'] = apply_filters( 'greenworld_home_title_suffix', 'Health & Natural Wellness Products Kenya' );
 			return $parts;
 		}
@@ -125,7 +125,7 @@ final class Meta implements Bootable {
 		$img   = $this->social_image();
 		$is_product = function_exists( 'is_product' ) && is_product();
 
-		printf( '<meta property="og:site_name" content="%s" />' . "\n", esc_attr( get_bloginfo( 'name' ) ) );
+		printf( '<meta property="og:site_name" content="%s" />' . "\n", esc_attr( $this->brand_name() ) );
 		printf( '<meta property="og:locale" content="%s" />' . "\n", esc_attr( str_replace( '-', '_', str_replace( '_', '-', (string) get_locale() ) ) ) );
 		printf( '<meta property="og:title" content="%s" />' . "\n", esc_attr( $title ) );
 		if ( '' !== $desc ) {
@@ -237,6 +237,16 @@ final class Meta implements Bootable {
 			}
 		}
 		return trailingslashit( get_template_directory_uri() ) . 'assets/img/logo-badge.png';
+	}
+
+	/**
+	 * Short brand / preferred site name for og:site_name and the homepage
+	 * title. Mirrors Schema::brand_name() so the head metadata and the JSON-LD
+	 * WebSite entity always present the same site name to Google.
+	 */
+	private function brand_name(): string {
+		$b = trim( (string) apply_filters( 'greenworld_brand_name', (string) get_bloginfo( 'name' ) ) );
+		return '' !== $b ? $b : (string) get_bloginfo( 'name' );
 	}
 
 	private function post_meta( string $key ): string {

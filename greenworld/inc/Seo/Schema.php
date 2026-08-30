@@ -99,8 +99,10 @@ final class Schema implements Bootable {
 		$org = [
 			'@type'              => 'Organization',
 			'@id'                => $this->id( '#organization', true ),
-			'name'               => get_bloginfo( 'name' ),
-			'alternateName'      => apply_filters( 'greenworld_org_alternate_names', [ 'Green World Health', 'Green World Health Solutions Kenya' ] ),
+			'name'               => $this->legal_name(),
+			'legalName'          => $this->legal_name(),
+			'alternateName'      => apply_filters( 'greenworld_org_alternate_names', [ 'Green World Health', 'greenworldhealth.co.ke' ] ),
+			'brand'              => [ '@type' => 'Brand', 'name' => $this->brand_name() ],
 			'url'                => home_url( '/' ),
 			'logo'               => [ '@id' => $this->id( '#logo', true ) ],
 			'image'              => [ '@id' => $this->id( '#logo', true ) ],
@@ -144,7 +146,7 @@ final class Schema implements Bootable {
 		$store = [
 			'@type'              => 'OnlineStore',
 			'@id'                => $this->id( '#store', true ),
-			'name'               => get_bloginfo( 'name' ),
+			'name'               => $this->legal_name(),
 			'url'                => home_url( '/' ),
 			'image'              => [ '@id' => $this->id( '#logo', true ) ],
 			'logo'               => [ '@id' => $this->id( '#logo', true ) ],
@@ -166,9 +168,9 @@ final class Schema implements Bootable {
 	/** The physical location as a full LocalBusiness (Nairobi office; pickup available), linked to the brand. */
 	private function place(): array {
 		$place = [
-			'@type'              => 'LocalBusiness',
+			'@type'              => $this->local_business_type(),
 			'@id'                => $this->id( '#place', true ),
-			'name'               => get_bloginfo( 'name' ),
+			'name'               => $this->legal_name(),
 			'description'        => $this->org_description(),
 			'url'                => home_url( '/' ),
 			'image'              => [ '@id' => $this->id( '#logo', true ) ],
@@ -244,7 +246,8 @@ final class Schema implements Bootable {
 			'@type'           => 'WebSite',
 			'@id'             => $this->id( '#website', true ),
 			'url'             => home_url( '/' ),
-			'name'            => get_bloginfo( 'name' ),
+			'name'            => $this->brand_name(),
+			'alternateName'   => $this->legal_name(),
 			'description'     => (string) get_bloginfo( 'description' ),
 			'publisher'       => [ '@id' => $this->id( '#organization', true ) ],
 			'inLanguage'      => $this->lang(),
@@ -920,6 +923,35 @@ final class Schema implements Bootable {
 	private function clean( string $s ): string {
 		$s = trim( (string) preg_replace( '/\s+/', ' ', wp_strip_all_tags( $s ) ) );
 		return $s;
+	}
+
+	/**
+	 * The authoritative legal / organization entity name. Filterable so the
+	 * site owner can change it in one place; defaults to the registered name.
+	 */
+	private function legal_name(): string {
+		$n = trim( (string) apply_filters( 'greenworld_legal_name', 'Green World Health Solutions' ) );
+		return '' !== $n ? $n : 'Green World Health Solutions';
+	}
+
+	/**
+	 * The short brand / preferred site name used for WebSite.name and
+	 * og:site_name — the label Google prefers as the site's name in results.
+	 * Defaults to the WordPress site title so behaviour is unchanged until a
+	 * distinct short brand is set via the greenworld_brand_name filter.
+	 */
+	private function brand_name(): string {
+		$b = trim( (string) apply_filters( 'greenworld_brand_name', (string) get_bloginfo( 'name' ) ) );
+		return '' !== $b ? $b : (string) get_bloginfo( 'name' );
+	}
+
+	/**
+	 * Schema.org type for the physical storefront node. Defaults to the generic
+	 * LocalBusiness; can be narrowed (e.g. HealthAndBeautyBusiness) via filter.
+	 */
+	private function local_business_type(): string {
+		$t = trim( (string) apply_filters( 'greenworld_local_business_type', 'LocalBusiness' ) );
+		return '' !== $t ? $t : 'LocalBusiness';
 	}
 
 	private function org_description(): string {
